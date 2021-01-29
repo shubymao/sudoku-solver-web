@@ -1,0 +1,36 @@
+{
+  "name": "sudoku-solver-web",
+  "version": "1.0.0",
+  "description": "A TypeScript sudoku solver library",
+  "main": "\u001b[D\u001b[./src/solver.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubymao/Sudoku-Solver-Web.git"
+  },
+  "keywords": [
+    "Puzzle-Solving",
+    "Library"
+  ],
+  "author": "Le-Li Mao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shubymao/Sudoku-Solver-Web/issues"
+  },
+  "homepage": "https://github.com/shubymao/Sudoku-Solver-Web#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
