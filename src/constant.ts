@@ -1,10 +1,19 @@
-export const SIZE = 9;
+import { Cell } from './types/cell';
+import { Constraint } from './types/constraint';
+import { GridParam } from './types/grid-param';
+
+export const GRID_SIZE = 9;
 export const BOX_SIZE = 3;
 
-export type Grid = Array<Array<number>>;
+export const DEFAULT_GRID_PARAM: GridParam = {
+  rowSets: [],
+  colSets: [],
+  boxSets: [],
+};
 
-export interface GridParam {
-  rowSets: number[];
-  colSets: number[];
-  boxSets: number[];
-}
+export const DEFAULT_CELL: Cell = { row: -1, col: -1, box: -1 };
+
+export const DEFAULT_CONSTRINT: Constraint = {
+  cell: { ...DEFAULT_CELL },
+  options: [],
+};

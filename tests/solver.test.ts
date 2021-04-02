@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { verifyGrid } from '../src/solver';
+import { Grid } from '../src/types/grid';
 
 describe('verify sudoku', () => {
   it('accept valid size empty grid', () => {
@@ -24,9 +25,9 @@ describe('verify sudoku', () => {
   });
 
   it('reject null and undefine grid', () => {
-    const undefineGrid = undefined;
+    const undefineGrid: Grid = undefined;
     expect(() => verifyGrid(undefineGrid)).throws(/undefine/);
-    const nullGrid = null;
+    const nullGrid: Grid = null;
     expect(() => verifyGrid(nullGrid)).throws(/null/);
   });
 
