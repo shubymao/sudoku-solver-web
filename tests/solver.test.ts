@@ -1,8 +1,10 @@
 import { expect } from 'chai';
 import { verifyGrid } from '../src/solver';
 import { Grid } from '../src/types/grid';
+import * as data from './test-data.json';
+import { solve } from '../src/index';
 
-describe('verify sudoku', () => {
+describe('sudoku solver test', () => {
   it('accept valid size empty grid', () => {
     const grid = makeGrid(9, 9);
     expect(function () {
@@ -50,6 +52,17 @@ describe('verify sudoku', () => {
     grid[8][0] = 5;
     grid[6][2] = 5;
     expect(() => verifyGrid(grid)).throws(/invalid.*box.*6.*5/);
+  });
+
+  it('solver terminates', () => {
+    const grid = data['valid-sudoku'];
+    solve(grid);
+  });
+
+  it('solver result in correct solution', () => {
+    const grid = data['valid-sudoku'];
+    const solution = solve(grid);
+    expect(solution).eql(data['solution']);
   });
 });
 

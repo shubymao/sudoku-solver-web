@@ -6,7 +6,7 @@ import { Grid } from './types/grid';
 import { GridParam } from './types/grid-param';
 import { getBit } from './util';
 
-export function makeGridParam(grid: Grid) {
+export function makeGridParam(grid: Grid): GridParam {
   const param: GridParam = cloneDeep(DEFAULT_GRID_PARAM);
   param.boxSets = times(GRID_SIZE, (i) => getBoxSet(grid, i));
   param.rowSets = times(GRID_SIZE, (i) => getRowSet(grid, i));
@@ -56,24 +56,25 @@ export function getBoxSet(grid: Grid, box: number): number {
 }
 
 export function getMaxConstraint(grid: Grid, { boxSets, rowSets, colSets }: GridParam): Constraint {
-  let constraint: Constraint = { ...DEFAULT_CONSTRINT };
-  let maxRestriction = 0;
+  const constraint: Constraint = { ...DEFAULT_CONSTRINT };
+  let maxRestriction = -1;
   for (let row = 0; row < GRID_SIZE; row++) {
     for (let col = 0; col < GRID_SIZE; col++) {
       if (grid[row][col] !== 0) continue;
-      let box = 3 * Math.floor(row / 3) + Math.floor(col / 3);
-      let restriction = boxSets[box] | rowSets[row] | colSets[col];
+      const box = 3 * Math.floor(row / 3) + Math.floor(col / 3);
+      const restriction = boxSets[box] | rowSets[row] | colSets[col];
       if (restriction > maxRestriction) {
         maxRestriction = restriction;
         constraint.cell = { row, col, box };
       }
     }
   }
+  if (maxRestriction === -1) return constraint;
   constraint.options = getOptions(maxRestriction);
   return constraint;
 }
 
-export function toggleParams(cell: Cell, val: number, params: GridParam) {
+export function toggleParams(cell: Cell, val: number, params: GridParam): void {
   const { rowSets, colSets, boxSets } = params;
   rowSets[cell.row] ^= 1 << (val - 1);
   colSets[cell.col] ^= 1 << (val - 1);
@@ -81,7 +82,7 @@ export function toggleParams(cell: Cell, val: number, params: GridParam) {
 }
 
 export function getOptions(restriction: number): number[] {
-  let options = [];
+  const options = [];
   for (let num = 1; num <= GRID_SIZE; num++) {
     if (getBit(restriction, num - 1) === 0) options.push(num);
   }

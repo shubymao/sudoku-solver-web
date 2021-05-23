@@ -1,40 +1,22 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es6",
-    "module": "commonjs",
-    "declaration": true,
-    "noImplicitAny": true,
-    "removeComments": true,
-    "experimentalDecorators": true,
-    "rootDir": ".",
+    "module":"es2015",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "strict": true,
     "sourceMap": true,
-    "listFiles": true,
-    "newLine": "LF",
-    "noEmitOnError": true
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-  "filesGlob": [
-    "./**/*.ts",
-    "./**/*.tsx",
-    "!./**/*.d.ts",
-    "!./gulpfile.ts",
-    "./typings/**/*.d.ts",
-    "!./node_modules/**/*.ts",
-    "./node_modules/typescript/lib/lib.es6.d.ts"
-  ],
-  "exclude": [],
-  "files": [
-    "./lib/cli.ts",
-    "./lib/index.ts",
-    "./test/indexSpec.ts",
-    "./typings/bundle.d.ts",
-    "./typings/empower/empower.d.ts",
-    "./typings/gulp/gulp.d.ts",
-    "./typings/mocha/mocha.d.ts",
-    "./typings/node/node.d.ts",
-    "./typings/orchestrator/orchestrator.d.ts",
-    "./typings/power-assert-formatter/power-assert-formatter.d.ts",
-    "./typings/power-assert/power-assert.d.ts",
-    "./typings/q/Q.d.ts",
-    "./node_modules/typescript/lib/lib.es6.d.ts"
+  "include": [
+    "src"
   ]
 }

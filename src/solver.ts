@@ -1,4 +1,4 @@
-import { fillGridWithDefaultValue} from './grid';
+import { fillGridWithDefaultValue } from './grid';
 import { getMaxConstraint, makeGridParam, toggleParams } from './grid-param';
 import { Grid } from './types/grid';
 import { GridParam } from './types/grid-param';
@@ -11,10 +11,11 @@ export function verifyGrid(grid: Grid): GridParam {
   return param;
 }
 
-export function solveSudoku(grid: Grid, params: GridParam): Grid {
-  let { cell, options } = getMaxConstraint(grid, params);
+export function solveSudoku(grid: Grid, params: GridParam): Grid | null {
+  const { cell, options } = getMaxConstraint(grid, params);
+  if (cell.row === -1) return grid;
   let solution = null;
-  for (let option of options) {
+  for (const option of options) {
     grid[cell.row][cell.col] = option;
     toggleParams(cell, option, params);
     if ((solution = solveSudoku(grid, params))) break;
