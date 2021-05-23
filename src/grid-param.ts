@@ -57,7 +57,7 @@ export function getBoxSet(grid: Grid, box: number): number {
 
 export function getMaxConstraint(grid: Grid, { boxSets, rowSets, colSets }: GridParam): Constraint {
   let constraint: Constraint = { ...DEFAULT_CONSTRINT };
-  let maxRestriction = 0;
+  let maxRestriction = -1;
   for (let row = 0; row < GRID_SIZE; row++) {
     for (let col = 0; col < GRID_SIZE; col++) {
       if (grid[row][col] !== 0) continue;
@@ -69,6 +69,7 @@ export function getMaxConstraint(grid: Grid, { boxSets, rowSets, colSets }: Grid
       }
     }
   }
+  if(maxRestriction===-1)return constraint;
   constraint.options = getOptions(maxRestriction);
   return constraint;
 }

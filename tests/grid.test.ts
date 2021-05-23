@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { fillGridWithDefaultValue, getBoxFromRolCol, makeGrid } from '../src/grid';
+import { getBit } from '../src/util';
 
 describe('grid function test', () => {
   it('make grid create right dimension', () => {
@@ -55,4 +56,8 @@ describe('grid function test', () => {
     expect(() => getBoxFromRolCol(9, 1)).to.throw(/out of bound/);
     expect(() => getBoxFromRolCol(1, -1)).to.throw(/out of bound/);
   });
+
+  it('get bit throws error when number is null', ()=>{
+    expect(() => getBit(null,null)).to.throw();
+  })
 });

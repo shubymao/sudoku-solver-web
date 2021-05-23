@@ -13,6 +13,7 @@ export function verifyGrid(grid: Grid): GridParam {
 
 export function solveSudoku(grid: Grid, params: GridParam): Grid {
   let { cell, options } = getMaxConstraint(grid, params);
+  if(cell.row===-1)return grid;
   let solution = null;
   for (let option of options) {
     grid[cell.row][cell.col] = option;
