@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { verifyGrid } from '../src/solver';
 import { Grid } from '../src/types/grid';
 import * as data from './test-data.json';
-import solve from '../src/index';
+import { solve } from '../src/index';
 
 describe('sudoku solver test', () => {
   it('accept valid size empty grid', () => {
@@ -54,16 +54,16 @@ describe('sudoku solver test', () => {
     expect(() => verifyGrid(grid)).throws(/invalid.*box.*6.*5/);
   });
 
-  it('solver terminates', ()=> {
+  it('solver terminates', () => {
     const grid = data['valid-sudoku'];
     solve(grid);
   });
 
-  it('solver result in correct solution', ()=> {
+  it('solver result in correct solution', () => {
     const grid = data['valid-sudoku'];
     const solution = solve(grid);
     expect(solution).eql(data['solution']);
-  })
+  });
 });
 
 function makeGrid(rowCount: number, colCount: number) {

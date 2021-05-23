@@ -4,7 +4,7 @@ import { getBit } from '../src/util';
 
 describe('grid function test', () => {
   it('make grid create right dimension', () => {
-    let grid = makeGrid(5, 6);
+    const grid = makeGrid(5, 6);
     expect(grid.length).equal(5);
     expect(grid[0].length).equal(6);
   });
@@ -29,14 +29,14 @@ describe('grid function test', () => {
   });
 
   it('make grid fill the grid with 0', () => {
-    let grid = makeGrid(5, 6);
-    let allZero = grid.every((r) => r.every((c) => c === 0));
+    const grid = makeGrid(5, 6);
+    const allZero = grid.every((r) => r.every((c) => c === 0));
     expect(allZero).to.be.true;
   });
 
   it('make grid fill the grid with custom value', () => {
-    let grid = makeGrid(5, 6, 9);
-    let allZero = grid.every((r) => r.every((c) => c === 9));
+    const grid = makeGrid(5, 6, 9);
+    const allZero = grid.every((r) => r.every((c) => c === 9));
     expect(allZero).to.be.true;
   });
 
@@ -57,7 +57,7 @@ describe('grid function test', () => {
     expect(() => getBoxFromRolCol(1, -1)).to.throw(/out of bound/);
   });
 
-  it('get bit throws error when number is null', ()=>{
-    expect(() => getBit(null,null)).to.throw();
-  })
+  it('get bit throws error when number is null', () => {
+    expect(() => getBit(null, null)).to.throw();
+  });
 });

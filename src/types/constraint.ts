@@ -1,6 +1,6 @@
-import { Cell } from "./cell";
+import { Cell } from './cell';
 
 export interface Constraint {
-    cell: Cell;
-    options: number[];
+  cell: Cell;
+  options: number[];
 }

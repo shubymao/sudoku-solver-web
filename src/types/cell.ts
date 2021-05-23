@@ -1,5 +1,5 @@
 export interface Cell {
-    row: number;
-    col: number;
-    box: number;
+  row: number;
+  col: number;
+  box: number;
 }
